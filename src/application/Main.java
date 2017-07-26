@@ -24,6 +24,12 @@ public class Main {
 
             List<Stat> results = Stat.findAll(db);
             for (Stat stat : results){
+                stat.setWins(0);
+                stat.update();
+            }
+
+            results = Stat.findAll(db);
+            for (Stat stat: results){
                 System.out.println(stat);
             }
 
