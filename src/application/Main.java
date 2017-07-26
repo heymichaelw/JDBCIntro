@@ -4,6 +4,7 @@ import application.helpers.DatabaseManager;
 import application.models.Stat;
 
 import java.sql.*;
+import java.util.List;
 
 public class Main {
 
@@ -21,14 +22,9 @@ public class Main {
             tommyStat.save();
             michaelStat.save();
 
-
-            ResultSet rs = statement.executeQuery("SELECT * FROM stats");
-
-            while (rs.next()){
-                String name = rs.getString("name");
-                int wins = rs.getInt("wins");
-                int losses = rs.getInt("losses");
-                System.out.printf("Name: %s, Wins: %s, Losses: %s \n", name, wins, losses);
+            List<Stat> results = Stat.findAll(db);
+            for (Stat stat : results){
+                System.out.println(stat);
             }
 
         } catch (SQLException ex) {
