@@ -13,6 +13,10 @@ public class DatabaseManager {
         this.statement = connection.createStatement();
     }
 
+    public Statement getStatement() {
+        return statement;
+    }
+
     public void dropStatsTable() throws SQLException{
         statement.executeUpdate("DROP TABLE IF EXISTS stats");
     }
